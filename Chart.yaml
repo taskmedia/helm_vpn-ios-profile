@@ -1,0 +1,9 @@
+apiVersion: v2
+name: vpn-ios-profile
+description: Deploy a VPN server in K8s with provided iOS profile
+
+type: application
+
+version: 0.1.0
+
+appVersion: "latest"
