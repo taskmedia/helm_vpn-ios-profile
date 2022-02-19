@@ -7,3 +7,8 @@ type: application
 version: 0.1.0
 
 appVersion: "latest"
+
+dependencies:
+  - name: ipsec-vpn-server
+    version: 1.0.2
+    repository: "https://ipsec-vpn-server.helm.task.media/"
