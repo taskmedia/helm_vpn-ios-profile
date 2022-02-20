@@ -1,4 +1,4 @@
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/vpn-ios-profile)](https://artifacthub.io/packages/search?repo=vpn-ios-profile)
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/vpn-ios-profile)](https://artifacthub.io/packages/helm/vpn-ios-profile/vpn-ios-profile)
 
 # Helm chart: IPsec VPN server with iOS profile
 
