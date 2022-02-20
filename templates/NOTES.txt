@@ -1,0 +1,4 @@
+Your VPN server was created.
+Please use the following command to get your iOS profile:
+
+$ kubectl get secrets vpn-ios-profile-ios-profile --template '{{ index .data "vpn-<username>.mobileconfig" }}' | base64 -d
