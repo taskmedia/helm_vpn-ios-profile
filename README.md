@@ -1,3 +1,5 @@
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/vpn-ios-profile)](https://artifacthub.io/packages/search?repo=vpn-ios-profile)
+
 # Helm chart: IPsec VPN server with iOS profile
 
 Kubernetes [Helm](https://helm.sh) chart to run a [IPsec VPN server](https://github.com/taskmedia/helm_ipsec-vpn-server) with provided iOS profile to directly connect your Apple device to use the VPN.
