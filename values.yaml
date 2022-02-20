@@ -15,3 +15,11 @@ ipsec-vpn-server:
   users:
     - username: vpn
       password: password
+
+iosprofile:
+  # You can use the variables %username and %dns_name.
+  ConsentText: "iOS Profile %username@%dns_name"
+  PayloadDisplayName: "iOS Profile to %dns_name with user %username"
+  PayloadDescription: "This iOS Profile provides VPN connection to %dns_name with the user %username"
+  PayloadIdentifier: "%dns_name.%username.ios-profile"
+  PayloadOrganization: "%dns_name"
