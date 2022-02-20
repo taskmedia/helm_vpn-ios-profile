@@ -18,6 +18,10 @@ jobs:
 
       - name: Create release binary
         run: |
+          helm  dependency update
+
+      - name: Create release binary
+        run: |
           helm package ./ --destination release/
 
       - name: Update Index
