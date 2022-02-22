@@ -10,13 +10,13 @@ keywords:
 
 type: application
 
-version: 0.1.1
+version: 0.2.0
 
 appVersion: "latest"
 
 dependencies:
   - name: ipsec-vpn-server
-    version: 1.0.2
-    repository: "https://ipsec-vpn-server.helm.task.media/"
+    version: 1.1.0
+    repository: "https://helm.task.media/"
 
 icon: https://media.task.media/images/logo.png
