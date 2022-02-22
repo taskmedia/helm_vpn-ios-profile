@@ -1,7 +1,7 @@
 apiVersion: v2
 name: vpn-ios-profile
 description: Deploy a VPN server in K8s with provided iOS profile
-home: https://vpn-ios-profile.helm.task.media/
+home: https://helm.task.media/vpn-ios-profile/
 keywords:
   - vpn
   - ipsec

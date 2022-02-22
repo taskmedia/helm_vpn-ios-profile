@@ -27,7 +27,7 @@ jobs:
       - name: Update Index
         env:
           PROJECT: github.com/taskmedia/helm_vpn-ios-profile
-          REPO_URL: https://vpn-ios-profile.helm.task.media
+          REPO_URL: https://helm.task.media/vpn-ios-profile
         run: |
           rm -rf ./gh-pages.zip
           curl -sSLO https://${PROJECT}/archive/gh-pages.zip
@@ -39,6 +39,8 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
+          repository-name: taskmedia/helm
           branch: gh-pages
+          ssh-key: ${{ secrets.DEPLOY_KEY_BLOG }}
           folder: repo
           clean: false
