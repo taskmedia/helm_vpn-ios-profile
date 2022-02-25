@@ -1,22 +1,22 @@
 {{/*
-VPN configuration to enable VPN always
-All communication will go through VPN on iOS when selected.
+VPN configuration to enable VPN always when not connected to known network
+All communication will go through VPN on iOS when selected and not in list of known networks.
 VPN will always reconnect on this mode.
 */}}
-{{- define "vpn.always" -}}
+{{- define "vpn.wifi" -}}
 {{- $dns_name := (index .root.Values "ipsec-vpn-server" "vpn" "dns_name") -}}
 <dict>
   <key>UserDefinedName</key>
-  <string>{{ $dns_name }} always</string>
+  <string>{{ $dns_name }} Wi-Fi</string>
 
   <key>PayloadDisplayName</key>
-  <string>{{ $dns_name }} always</string>
+  <string>{{ $dns_name }} Wi-Fi</string>
 
   <key>PayloadIdentifier</key>
-  <string>{{ $dns_name }}.{{ .user.username }}.always</string>
+  <string>{{ $dns_name }}.{{ .user.username }}.wifi</string>
 
   <key>PayloadUUID</key>
-  <string>{{ sha1sum (printf "%s-%s-vpn-always" $dns_name .user.username) | upper }}</string>
+  <string>{{ sha1sum (printf "%s-%s-vpn-wifi" $dns_name .user.username) | upper }}</string>
 
   <key>VPNType</key>
   <string>IPSec</string>
@@ -59,8 +59,30 @@ VPN will always reconnect on this mode.
   <key>OnDemandRules</key>
   <array>
     <dict>
+      <key>InterfaceTypeMatch</key>
+      <string>WiFi</string>
+
+      <key>SSIDMatch</key>
+      <array>
+        {{- range .root.Values.trusted_ssids }}
+        <string>{{- . -}}</string>
+        {{- end}}
+      </array>
+
+      <key>Action</key>
+      <string>Disconnect</string>
+    </dict>
+    <dict>
+      <key>InterfaceTypeMatch</key>
+      <string>WiFi</string>
+      
       <key>Action</key>
       <string>Connect</string>
+    </dict>
+    <dict>
+      <!-- VPN Default state -->
+      <key>Action</key>
+      <string>Disconnect</string>
     </dict>
   </array>
   

@@ -1,22 +1,21 @@
 {{/*
-VPN configuration to enable VPN always
-All communication will go through VPN on iOS when selected.
-VPN will always reconnect on this mode.
+VPN configuration to enable VPN manual
+Connection can be disabled by this setting and enabled for a period of time if necessary.
 */}}
-{{- define "vpn.always" -}}
+{{- define "vpn.manual" -}}
 {{- $dns_name := (index .root.Values "ipsec-vpn-server" "vpn" "dns_name") -}}
 <dict>
   <key>UserDefinedName</key>
-  <string>{{ $dns_name }} always</string>
+  <string>{{ $dns_name }} manual</string>
 
   <key>PayloadDisplayName</key>
-  <string>{{ $dns_name }} always</string>
+  <string>{{ $dns_name }} manual</string>
 
   <key>PayloadIdentifier</key>
-  <string>{{ $dns_name }}.{{ .user.username }}.always</string>
+  <string>{{ $dns_name }}.{{ .user.username }}.manual</string>
 
   <key>PayloadUUID</key>
-  <string>{{ sha1sum (printf "%s-%s-vpn-always" $dns_name .user.username) | upper }}</string>
+  <string>{{ sha1sum (printf "%s-%s-vpn-manual" $dns_name .user.username) | upper }}</string>
 
   <key>VPNType</key>
   <string>IPSec</string>
@@ -52,17 +51,6 @@ VPN will always reconnect on this mode.
 
   <key>PayloadVersion</key>
   <integer>1</integer>
-
-  <key>OnDemandEnabled</key>
-  <integer>1</integer>
-
-  <key>OnDemandRules</key>
-  <array>
-    <dict>
-      <key>Action</key>
-      <string>Connect</string>
-    </dict>
-  </array>
   
   <key>OverridePrimary</key>
   <true/>

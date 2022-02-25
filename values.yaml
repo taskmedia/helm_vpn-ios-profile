@@ -1,6 +1,10 @@
 fullnameOverride: &global-fullnameOverride vpn-ios-profile
 namespace: &global-namespace vpn
 
+trusted_ssids:
+  - myhome-network
+  - corp-network
+
 # values of dependency chart ipsec-vpn-server
 ipsec-vpn-server:
   # Overwrite VPN configuration of ipsec-vpn-server chart
