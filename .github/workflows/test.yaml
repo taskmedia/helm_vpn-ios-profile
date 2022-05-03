@@ -35,3 +35,11 @@ jobs:
         run: |
           ct lint \
             --charts ./
+
+      - name: create kind cluster
+        uses: helm/kind-action@v1.2.0
+
+      - name: run chart-testing (install)
+        run: |
+          ct install \
+            --charts ./
