@@ -8,6 +8,10 @@ keywords:
   - ios
   - mobileconfig
 
+maintainers:
+  - name: taskmedia
+    url: https://task.media
+
 type: application
 
 version: 0.2.3
