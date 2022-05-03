@@ -1,5 +1,4 @@
 fullnameOverride: &global-fullnameOverride vpn-ios-profile
-namespace: &global-namespace vpn
 
 trusted_ssids:
   - myhome-network
@@ -10,7 +9,6 @@ ipsec-vpn-server:
   # Overwrite VPN configuration of ipsec-vpn-server chart
   # recommended to overwrite name when using sealed-secrets
   fullnameOverride: *global-fullnameOverride
-  namespace: *global-namespace
 
   vpn:
     dns_name: vpn.example.com
