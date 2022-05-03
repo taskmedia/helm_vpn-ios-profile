@@ -39,6 +39,10 @@ jobs:
       - name: create kind cluster
         uses: helm/kind-action@v1.2.0
 
+      - name: setup chart dependency repository
+        run: |
+          helm repo add taskmedia https://helm.task.media/
+
       - name: run chart-testing (install)
         run: |
           ct install \
