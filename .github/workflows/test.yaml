@@ -1,0 +1,33 @@
+name: Test Helm chart
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  test:
+    name: Test Helm chart
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: set up Helm
+        uses: action/helm@main
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: set up chart-testing
+        uses: helm/chart-testing-action@v2.2.1
+
+      - name: run chart-testing (lint)
+        run: |
+          ct lint \
+            --charts ./
