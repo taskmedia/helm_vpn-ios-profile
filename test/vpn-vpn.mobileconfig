@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>ConsentText</key>
+  <dict>
+    <key>default</key>
+    <string>iOS Profile vpn@vpn.example.com</string>
+  </dict>
+  <key>HasRemovalPasscode</key>
+  <false/>
+  <key>PayloadContent</key>
+  <array>
+    <dict>
+      <key>UserDefinedName</key>
+      <string>vpn.example.com always</string>
+
+      <key>PayloadDisplayName</key>
+      <string>vpn.example.com always</string>
+
+      <key>PayloadIdentifier</key>
+      <string>vpn.example.com.vpn.always</string>
+
+      <key>PayloadUUID</key>
+      <string>7A48801E2EE20A88BE29C703D8AB15EEB5A1B0C7</string>
+
+      <key>VPNType</key>
+      <string>IPSec</string>
+
+      <key>IPSec</key>
+      <dict>
+        <key>RemoteAddress</key>
+        <string>vpn.example.com</string>
+
+        <key>AuthenticationMethod</key>
+        <string>SharedSecret</string>
+
+        <key>XAuthName</key>
+        <string>vpn</string>
+
+        <key>XAuthPassword</key>
+        <string>password</string>
+
+        <key>XAuthEnabled</key>
+        <integer>1</integer>
+
+        <key>LocalIdentifierType</key>
+        <string>KeyID</string>
+
+        <key>SharedSecret</key>
+        <data>
+        eW91cl9wcmVzaGFyZWRrZXk=
+        </data>
+      </dict>
+
+      <key>PayloadType</key>
+      <string>com.apple.vpn.managed</string>
+
+      <key>PayloadVersion</key>
+      <integer>1</integer>
+
+      <key>OnDemandEnabled</key>
+      <integer>1</integer>
+
+      <key>OnDemandRules</key>
+      <array>
+        <dict>
+          <key>Action</key>
+          <string>Connect</string>
+        </dict>
+      </array>
+
+      <key>OverridePrimary</key>
+      <true/>
+
+      <key>IPv4</key>
+      <dict>
+        <key>OverridePrimary</key>
+        <integer>1</integer>
+      </dict>
+
+    </dict>
+    <dict>
+      <key>UserDefinedName</key>
+      <string>vpn.example.com manual</string>
+
+      <key>PayloadDisplayName</key>
+      <string>vpn.example.com manual</string>
+
+      <key>PayloadIdentifier</key>
+      <string>vpn.example.com.vpn.manual</string>
+
+      <key>PayloadUUID</key>
+      <string>AC75AC649AA2452990D5C3CFFB817044B9855E79</string>
+
+      <key>VPNType</key>
+      <string>IPSec</string>
+
+      <key>IPSec</key>
+      <dict>
+        <key>RemoteAddress</key>
+        <string>vpn.example.com</string>
+
+        <key>AuthenticationMethod</key>
+        <string>SharedSecret</string>
+
+        <key>XAuthName</key>
+        <string>vpn</string>
+
+        <key>XAuthPassword</key>
+        <string>password</string>
+
+        <key>XAuthEnabled</key>
+        <integer>1</integer>
+
+        <key>LocalIdentifierType</key>
+        <string>KeyID</string>
+
+        <key>SharedSecret</key>
+        <data>
+        eW91cl9wcmVzaGFyZWRrZXk=
+        </data>
+      </dict>
+
+      <key>PayloadType</key>
+      <string>com.apple.vpn.managed</string>
+
+      <key>PayloadVersion</key>
+      <integer>1</integer>
+
+      <key>OverridePrimary</key>
+      <true/>
+
+      <key>IPv4</key>
+      <dict>
+        <key>OverridePrimary</key>
+        <integer>1</integer>
+      </dict>
+
+    </dict>
+    <dict>
+      <key>UserDefinedName</key>
+      <string>vpn.example.com Wi-Fi</string>
+
+      <key>PayloadDisplayName</key>
+      <string>vpn.example.com Wi-Fi</string>
+
+      <key>PayloadIdentifier</key>
+      <string>vpn.example.com.vpn.wifi</string>
+
+      <key>PayloadUUID</key>
+      <string>1630A29621C0D601FD70F4D97BBEC1BBEDA3D0E7</string>
+
+      <key>VPNType</key>
+      <string>IPSec</string>
+
+      <key>IPSec</key>
+      <dict>
+        <key>RemoteAddress</key>
+        <string>vpn.example.com</string>
+
+        <key>AuthenticationMethod</key>
+        <string>SharedSecret</string>
+
+        <key>XAuthName</key>
+        <string>vpn</string>
+
+        <key>XAuthPassword</key>
+        <string>password</string>
+
+        <key>XAuthEnabled</key>
+        <integer>1</integer>
+
+        <key>LocalIdentifierType</key>
+        <string>KeyID</string>
+
+        <key>SharedSecret</key>
+        <data>
+        eW91cl9wcmVzaGFyZWRrZXk=
+        </data>
+      </dict>
+
+      <key>PayloadType</key>
+      <string>com.apple.vpn.managed</string>
+
+      <key>PayloadVersion</key>
+      <integer>1</integer>
+
+      <key>OnDemandEnabled</key>
+      <integer>1</integer>
+
+      <key>OnDemandRules</key>
+      <array>
+        <dict>
+          <key>InterfaceTypeMatch</key>
+          <string>WiFi</string>
+
+          <key>SSIDMatch</key>
+          <array>
+            <string>myhome-network</string>
+            <string>corp-network</string>
+          </array>
+
+          <key>Action</key>
+          <string>Disconnect</string>
+        </dict>
+        <dict>
+          <key>InterfaceTypeMatch</key>
+          <string>WiFi</string>
+
+          <key>Action</key>
+          <string>Connect</string>
+        </dict>
+        <dict>
+          <!-- VPN Default state -->
+          <key>Action</key>
+          <string>Disconnect</string>
+        </dict>
+      </array>
+
+      <key>OverridePrimary</key>
+      <true/>
+
+      <key>IPv4</key>
+      <dict>
+        <key>OverridePrimary</key>
+        <integer>1</integer>
+      </dict>
+
+    </dict>
+  </array>
+  <key>PayloadDisplayName</key>
+  <string>iOS Profile to vpn.example.com with user vpn</string>
+  <key>PayloadDescription</key>
+  <string>This iOS Profile provides VPN connection to vpn.example.com with the user vpn</string>
+  <key>PayloadIdentifier</key>
+  <string>vpn.example.com.vpn.ios-profile</string>
+  <key>PayloadOrganization</key>
+  <string>vpn.example.com</string>
+  <key>PayloadRemovalDisallowed</key>
+  <false/>
+  <key>PayloadType</key>
+  <string>Configuration</string>
+  <key>PayloadUUID</key>
+  <string>96EA10AB95F653AF53DD78FBCA737E4ED68DFE56</string>
+  <key>PayloadVersion</key>
+  <integer>1</integer>
+</dict>
+</plist>

@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "vpn-ios-profile.fullname" . }}-test-connection"
+  labels:
+    {{- include "vpn-ios-profile.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: compare-mobileconfig
+      image: bash:alpine3.15
+      command:
+        - /bin/sh
+        - -c
+        - |
+          # install full version of diff (busybox is not enought)
+          apk update
+          apk add diffutils
+
+          expected_file="/test_expected/vpn-vpn.mobileconfig"
+          actual_file="/test/vpn-{{ print (index .Values "ipsec-vpn-server" "users" 0 "username") }}.mobileconfig"
+
+          # ensure path is present
+          mkdir -p $(dirname $expected_file)
+
+          cat <<EOF > $expected_file
+          {{ .Files.Get "test/vpn-vpn.mobileconfig" | nindent 10 }}
+          EOF
+
+          diff \
+            --ignore-all-space \
+            --ignore-blank-lines \
+            $expected_file \
+            $actual_file
+
+      volumeMounts:
+        - name: ios-profile
+          mountPath: /test
+  restartPolicy: Never
+
+  volumes:
+    - name: ios-profile
+      secret:
+        secretName: {{ include "vpn-ios-profile.fullname" . }}-ios-profile
