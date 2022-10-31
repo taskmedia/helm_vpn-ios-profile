@@ -37,3 +37,9 @@ $ vi ./my-values.yaml
 
 $ helm upgrade --install vpn taskmedia/vpn-ios-profile --values ./my-values.yaml
 ```
+
+You can also use OCI Helm charts from [ghcr.io](https://ghcr.io/):
+
+```bash
+$ helm upgrade --install vpn oci://ghcr.io/taskmedia/vpn-ios-profile
+```
