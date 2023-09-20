@@ -24,6 +24,14 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
           volumeMounts:
           - name: iosprofiles
             mountPath: /usr/share/nginx/html
@@ -32,5 +40,5 @@ spec:
       - name: iosprofiles
         secret:
           secretName: {{ include "vpn-ios-profile.fullname" . }}-ios-profile
-          # defaultMode: 0444
+          defaultMode: 0444
 {{- end }}
