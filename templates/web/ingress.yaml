@@ -1,0 +1,22 @@
+{{- if .Values.web.ingressroute.enabled }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ include "vpn-ios-profile.fullname" . }}-web
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`{{ .Values.web.ingressroute.host }}`)
+    {{- if and .Values.web.ingressroute.enabled (and .Values.web.ingressroute.username .Values.web.ingressroute.password) }}
+    middlewares:
+    - name: {{ include "vpn-ios-profile.fullname" . }}-web-basicauth
+    {{- end }}
+    services:
+    - kind: Service
+      name: {{ include "vpn-ios-profile.fullname" . }}-web
+      port: 80
+  tls:
+    certResolver: le-prod
+{{- end }}
