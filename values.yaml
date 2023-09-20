@@ -25,3 +25,16 @@ iosprofile:
   PayloadDescription: "This iOS Profile provides VPN connection to %dns_name with the user %username"
   PayloadIdentifier: "%dns_name.%username.ios-profile"
   PayloadOrganization: "%dns_name"
+
+web:
+  # Enable web server to host iOS profiles
+  enabled: false
+
+  ingressroute:
+    # ingressroute to host iOS profiles at
+    host: ios.vpn.example.com
+
+    # basic auth credentials - username
+    username: ""
+    # basic auth credentials - password
+    password: ""

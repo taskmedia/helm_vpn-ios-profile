@@ -1,0 +1,9 @@
+{{- if and .Values.web.ingressroute.enabled (and .Values.web.ingressroute.username .Values.web.ingressroute.password) }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ include "vpn-ios-profile.fullname" . }}-web-basicauth
+spec:
+  basicAuth:
+    secret: {{ include "vpn-ios-profile.fullname" . }}-web-basicauth
+{{- end }}
