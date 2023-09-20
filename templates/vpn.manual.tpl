@@ -3,19 +3,18 @@ VPN configuration to enable VPN manual
 Connection can be disabled by this setting and enabled for a period of time if necessary.
 */}}
 {{- define "vpn.manual" -}}
-{{- $dns_name := (index .root.Values "ipsec-vpn-server" "vpn" "dns_name") -}}
 <dict>
   <key>UserDefinedName</key>
-  <string>{{ $dns_name }} manual</string>
+  <string>{{ .vpn.name | default .vpn.address }} manual</string>
 
   <key>PayloadDisplayName</key>
-  <string>{{ $dns_name }} manual</string>
+  <string>{{ .vpn.address }} manual</string>
 
   <key>PayloadIdentifier</key>
-  <string>{{ $dns_name }}.{{ .user.username }}.manual</string>
+  <string>{{ .vpn.address }}.{{ .vpn.username }}.manual</string>
 
   <key>PayloadUUID</key>
-  <string>{{ sha1sum (printf "%s-%s-vpn-manual" $dns_name .user.username) | upper }}</string>
+  <string>{{ sha1sum (printf "%s-%s-vpn-manual" .vpn.address .vpn.username) | upper }}</string>
 
   <key>VPNType</key>
   <string>IPSec</string>
@@ -23,26 +22,32 @@ Connection can be disabled by this setting and enabled for a period of time if n
   <key>IPSec</key>
   <dict>
     <key>RemoteAddress</key>
-    <string>{{ $dns_name }}</string>
+    <string>{{ .vpn.address }}</string>
 
     <key>AuthenticationMethod</key>
     <string>SharedSecret</string>
 
     <key>XAuthName</key>
-    <string>{{ .user.username }}</string>
+    <string>{{ .vpn.username }}</string>
 
     <key>XAuthPassword</key>
-    <string>{{ .user.password }}</string>
+    <string>{{ .vpn.password }}</string>
 
     <key>XAuthEnabled</key>
     <integer>1</integer>
+
+    {{- if .vpn.group }}
+    <key>LocalIdentifier</key>
+    <string>{{ .vpn.username }}</string>
+
+    {{- end }}
 
     <key>LocalIdentifierType</key>
     <string>KeyID</string>
 
     <key>SharedSecret</key>
     <data>
-    {{ (index .root.Values "ipsec-vpn-server" "vpn" "psk") | b64enc }}
+    {{ .vpn.psk | b64enc }}
     </data>
   </dict>
 
@@ -51,7 +56,7 @@ Connection can be disabled by this setting and enabled for a period of time if n
 
   <key>PayloadVersion</key>
   <integer>1</integer>
-  
+
   <key>OverridePrimary</key>
   <true/>
 

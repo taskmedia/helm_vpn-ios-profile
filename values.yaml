@@ -18,6 +18,15 @@ ipsec-vpn-server:
     - username: vpn
       password: password
 
+      # add additional VPNs for this user
+      additionalVpns: []
+        # - name: fritzbox # optional
+        #   address: uuid.myfritz.net
+        #   psk: user-presharedkey
+        #   username: vpn
+        #   group: vpn
+        #   password: user-password
+
 iosprofile:
   # You can use the variables %username and %dns_name.
   ConsentText: "iOS Profile %username@%dns_name"

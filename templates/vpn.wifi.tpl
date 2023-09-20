@@ -4,19 +4,18 @@ All communication will go through VPN on iOS when selected and not in list of kn
 VPN will always reconnect on this mode.
 */}}
 {{- define "vpn.wifi" -}}
-{{- $dns_name := (index .root.Values "ipsec-vpn-server" "vpn" "dns_name") -}}
 <dict>
   <key>UserDefinedName</key>
-  <string>{{ $dns_name }} Wi-Fi</string>
+  <string>{{ .vpn.name | default .vpn.address }} Wi-Fi</string>
 
   <key>PayloadDisplayName</key>
-  <string>{{ $dns_name }} Wi-Fi</string>
+  <string>{{ .vpn.address }} Wi-Fi</string>
 
   <key>PayloadIdentifier</key>
-  <string>{{ $dns_name }}.{{ .user.username }}.wifi</string>
+  <string>{{ .vpn.address }}.{{ .vpn.username }}.wifi</string>
 
   <key>PayloadUUID</key>
-  <string>{{ sha1sum (printf "%s-%s-vpn-wifi" $dns_name .user.username) | upper }}</string>
+  <string>{{ sha1sum (printf "%s-%s-vpn-wifi" .vpn.address .vpn.username) | upper }}</string>
 
   <key>VPNType</key>
   <string>IPSec</string>
@@ -24,26 +23,32 @@ VPN will always reconnect on this mode.
   <key>IPSec</key>
   <dict>
     <key>RemoteAddress</key>
-    <string>{{ $dns_name }}</string>
+    <string>{{ .vpn.address }}</string>
 
     <key>AuthenticationMethod</key>
     <string>SharedSecret</string>
 
     <key>XAuthName</key>
-    <string>{{ .user.username }}</string>
+    <string>{{ .vpn.username }}</string>
 
     <key>XAuthPassword</key>
-    <string>{{ .user.password }}</string>
+    <string>{{ .vpn.password }}</string>
 
     <key>XAuthEnabled</key>
     <integer>1</integer>
+
+    {{- if .vpn.group }}
+    <key>LocalIdentifier</key>
+    <string>{{ .vpn.username }}</string>
+
+    {{- end }}
 
     <key>LocalIdentifierType</key>
     <string>KeyID</string>
 
     <key>SharedSecret</key>
     <data>
-    {{ (index .root.Values "ipsec-vpn-server" "vpn" "psk") | b64enc }}
+    {{ .vpn.psk | b64enc }}
     </data>
   </dict>
 
@@ -64,7 +69,7 @@ VPN will always reconnect on this mode.
 
       <key>SSIDMatch</key>
       <array>
-        {{- range .root.Values.trusted_ssids }}
+        {{- range $.root.Values.trusted_ssids }}
         <string>{{- . -}}</string>
         {{- end}}
       </array>
@@ -75,7 +80,7 @@ VPN will always reconnect on this mode.
     <dict>
       <key>InterfaceTypeMatch</key>
       <string>WiFi</string>
-      
+
       <key>Action</key>
       <string>Connect</string>
     </dict>
@@ -85,7 +90,7 @@ VPN will always reconnect on this mode.
       <string>Disconnect</string>
     </dict>
   </array>
-  
+
   <key>OverridePrimary</key>
   <true/>
 
