@@ -24,11 +24,11 @@ Add custom certificates to iOS profile
   <key>PayloadDisplayName</key>
   <string>{{ .name }}</string>
   <key>PayloadIdentifier</key>
-  <string>com.apple.security.root.{{ uuidv4 }}</string>
+  <string>com.apple.security.root.{{ sha1sum (printf "cert-%s" .name) }}</string>
   <key>PayloadType</key>
   <string>com.apple.security.root</string>
   <key>PayloadUUID</key>
-  <string>{{ uuidv4 }}</string>
+  <string>{{ sha1sum (printf "cert-%s" .name) }}</string>
   <key>PayloadVersion</key>
   <integer>1</integer>
 </dict>
