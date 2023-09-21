@@ -5,3 +5,6 @@
 Chart.lock
 
 values-*.yaml
+
+## Ignore certs directory
+certs/*
