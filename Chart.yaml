@@ -21,8 +21,9 @@ version: 0.2.3
 appVersion: "latest"
 
 dependencies:
-  - name: ipsec-vpn-server
-    version: 1.1.4
-    repository: "https://helm.task.media/"
+- alias: vpnserver
+  name: ipsec-vpn-server
+  version: 1.1.4
+  repository: "https://helm.task.media/"
 
 icon: https://media.task.media/images/logo.png

@@ -1,7 +1,7 @@
 fullnameOverride: &global-fullnameOverride vpn-ios-profile
 
 # values of dependency chart ipsec-vpn-server
-ipsec-vpn-server:
+vpnserver:
   # Overwrite VPN configuration of ipsec-vpn-server chart
   # recommended to overwrite name when using sealed-secrets
   fullnameOverride: *global-fullnameOverride

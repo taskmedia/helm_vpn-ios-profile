@@ -2,12 +2,12 @@
 VPN list of concatenated VPNs for a user.
 */}}
 {{- define "vpn.list" -}}
-- address: {{ print (index .root.Values "ipsec-vpn-server" "vpn" "dns_name") }}
-  psk: {{ print (index .root.Values "ipsec-vpn-server" "vpn" "psk") }}
+- address: {{ print .root.Values.vpnserver.vpn.dns_name }}
+  psk: {{ print .root.Values.vpnserver.vpn.psk }}
   username: {{ .user.username }}
   password: {{ .user.password }}
 {{- $username := .user.username -}}
-{{- range (index .root.Values "ipsec-vpn-server" "users") -}}
+{{- range .root.Values.vpnserver.users -}}
 {{- if and (eq .username $username) (.additionalVpns) }}
 {{ toYaml .additionalVpns }}
 {{- end }}
