@@ -9,7 +9,7 @@ VPN will always reconnect on this mode.
   <string>{{ .vpn.name | default .vpn.address }} Wi-Fi</string>
 
   <key>PayloadDisplayName</key>
-  <string>{{ .vpn.address }} Wi-Fi</string>
+  <string>{{ .vpn.name | default .vpn.address }} Wi-Fi</string>
 
   <key>PayloadIdentifier</key>
   <string>{{ .vpn.address }}.{{ .vpn.username }}.wifi</string>

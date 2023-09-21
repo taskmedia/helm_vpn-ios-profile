@@ -9,7 +9,7 @@ VPN will always reconnect on this mode.
   <string>{{ .vpn.name | default .vpn.address }} always</string>
 
   <key>PayloadDisplayName</key>
-  <string>{{ .vpn.address }} always</string>
+  <string>{{ .vpn.name | default .vpn.address }} always</string>
 
   <key>PayloadIdentifier</key>
   <string>{{ .vpn.address }}.{{ .vpn.username }}.always</string>

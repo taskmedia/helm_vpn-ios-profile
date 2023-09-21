@@ -8,7 +8,7 @@ Connection can be disabled by this setting and enabled for a period of time if n
   <string>{{ .vpn.name | default .vpn.address }} manual</string>
 
   <key>PayloadDisplayName</key>
-  <string>{{ .vpn.address }} manual</string>
+  <string>{{ .vpn.name | default .vpn.address }} manual</string>
 
   <key>PayloadIdentifier</key>
   <string>{{ .vpn.address }}.{{ .vpn.username }}.manual</string>
