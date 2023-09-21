@@ -27,6 +27,11 @@ ipsec-vpn-server:
         #   group: vpn
         #   password: user-password
 
+      # add certificates for this user (e.g. for client / email authentication)
+      certs: []
+      #   - name: user cert
+      #     filename: certs/user.p12
+
 iosprofile:
   # You can use the variables %username and %dns_name.
   ConsentText: "iOS Profile %username@%dns_name"
@@ -47,3 +52,8 @@ web:
     username: ""
     # basic auth credentials - password
     password: ""
+
+# add certificates for all users (e.g. for certificate authority)
+certs:  []
+#   - name: root CA cert
+#     filename: certs/ca.cer
