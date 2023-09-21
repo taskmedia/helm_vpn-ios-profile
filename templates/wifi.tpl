@@ -22,11 +22,11 @@ WiFi connections
   <key>PayloadDisplayName</key>
   <string>Wi-Fi {{ .wifi.ssid }}</string>
   <key>PayloadIdentifier</key>
-  <string>com.apple.wifi.managed.{{ uuidv4 }}</string>
+  <string>com.apple.wifi.managed.{{ sha1sum (printf "wifi-%s" .wifi.ssid) }}</string>
   <key>PayloadType</key>
   <string>com.apple.wifi.managed</string>
   <key>PayloadUUID</key>
-  <string>{{ uuidv4 }}</string>
+  <string>{{ sha1sum (printf "wifi-%s" .wifi.ssid) }}</string>
   <key>PayloadVersion</key>
   <integer>1</integer>
   <key>ProxyType</key>
