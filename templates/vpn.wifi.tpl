@@ -69,7 +69,7 @@ VPN will always reconnect on this mode.
 
       <key>SSIDMatch</key>
       <array>
-        {{- range $.root.Values.wifi }}
+        {{- range .root.Values.wifi }}
         <string>{{- .ssid -}}</string>
         {{- end}}
       </array>
