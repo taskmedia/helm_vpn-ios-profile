@@ -54,6 +54,6 @@ web:
     password: ""
 
 # add certificates for all users (e.g. for certificate authority)
-certs:  []
+certs: []
 #   - name: root CA cert
 #     filename: certs/ca.cer
