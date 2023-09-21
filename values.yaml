@@ -57,3 +57,8 @@ web:
 certs: []
 #   - name: root CA cert
 #     filename: certs/ca.cer
+
+# add wifi networks to the iOS profile
+wifi: []
+  # - ssid: myhome-network
+  #   password: myhome-password
