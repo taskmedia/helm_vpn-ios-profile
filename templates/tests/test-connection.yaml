@@ -19,7 +19,7 @@ spec:
           apk add diffutils
 
           expected_file="/test_expected/vpn-vpn.mobileconfig"
-          actual_file="/test/vpn-{{ print (index .Values "ipsec-vpn-server" "users" 0 "username") }}.mobileconfig"
+          actual_file="/test/vpn-{{ print (index .Values.vpnserver.users 0 "username") }}.mobileconfig"
 
           # ensure path is present
           mkdir -p $(dirname $expected_file)

@@ -5,7 +5,7 @@ Add custom certificates to iOS profile
 {{- /* Generate list of users certificates */}}
 {{- $username := .user.username -}}
 {{- $certs := .root.Values.certs  -}}
-{{- range (index .root.Values "ipsec-vpn-server" "users") -}}
+{{- range .root.Values.vpnserver.users -}}
 {{- if and (eq .username $username) (.certs) }}
 {{- $certs = concat $certs .certs }}
 {{- end }}
