@@ -3,16 +3,16 @@ name: vpn-ios-profile
 description: Deploy a VPN server in K8s with provided iOS profile
 home: https://helm.task.media/vpn-ios-profile/
 keywords:
-  - vpn
-  - ipsec
-  - ios
-  - mobileconfig
+- vpn
+- ipsec
+- ios
+- mobileconfig
 
 maintainers:
-  - name: taskmedia
-    url: https://task.media
+- name: taskmedia
+  url: https://task.media
 sources:
-  - https://github.com/taskmedia/helm_vpn-ios-profile
+- https://github.com/taskmedia/helm_vpn-ios-profile
 
 type: application
 
