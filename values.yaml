@@ -1,9 +1,5 @@
 fullnameOverride: &global-fullnameOverride vpn-ios-profile
 
-trusted_ssids:
-  - myhome-network
-  - corp-network
-
 # values of dependency chart ipsec-vpn-server
 ipsec-vpn-server:
   # Overwrite VPN configuration of ipsec-vpn-server chart
@@ -15,22 +11,22 @@ ipsec-vpn-server:
     psk: your_presharedkey
 
   users:
-    - username: vpn
-      password: password
+  - username: vpn
+    password: password
 
-      # add additional VPNs for this user
-      additionalVpns: []
-        # - name: fritzbox # optional
-        #   address: uuid.myfritz.net
-        #   psk: user-presharedkey
-        #   username: vpn
-        #   group: vpn
-        #   password: user-password
+    # add additional VPNs for this user
+    additionalVpns: []
+    # - name: fritzbox # optional
+    #   address: uuid.myfritz.net
+    #   psk: user-presharedkey
+    #   username: vpn
+    #   group: vpn
+    #   password: user-password
 
-      # add certificates for this user (e.g. for client / email authentication)
-      certs: []
-      #   - name: user cert
-      #     filename: certs/user.p12
+    # add certificates for this user (e.g. for client / email authentication)
+    certs: []
+    # - name: user cert
+    #   filename: certs/user.p12
 
 iosprofile:
   # You can use the variables %username and %dns_name.
@@ -55,10 +51,10 @@ web:
 
 # add certificates for all users (e.g. for certificate authority)
 certs: []
-#   - name: root CA cert
-#     filename: certs/ca.cer
+# - name: root CA cert
+#   filename: certs/ca.cer
 
 # add wifi networks to the iOS profile
 wifi: []
-  # - ssid: myhome-network
-  #   password: myhome-password
+# - ssid: myhome-network
+#   password: myhome-password
