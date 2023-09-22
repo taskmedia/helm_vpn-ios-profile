@@ -12,9 +12,13 @@ Add custom certificates to iOS profile
 {{- end }}
 {{- /* Template generated list of certificates */}}
 {{- range $certs }}
+{{- $certType := "pkcs1" }}
+{{- if eq "p12" ((splitList "." .filename) | last) }}
+{{- $certType = "pkcs12" }}
+{{- end }}
 <dict>
   <key>PayloadCertificateFileName</key>
-  <string>{{ regexReplaceAll "\\W+" .name "-" }}.cer</string>
+  <string>{{ .filename }}</string>
   <key>PayloadContent</key>
   <data>
     {{ ($.root.Files.Get .filename | required (printf "certificate file not fould: %s" .filename)) | b64enc }}
@@ -24,9 +28,9 @@ Add custom certificates to iOS profile
   <key>PayloadDisplayName</key>
   <string>{{ .name }}</string>
   <key>PayloadIdentifier</key>
-  <string>com.apple.security.root.{{ sha1sum (printf "cert-%s" .name) }}</string>
+  <string>com.apple.security.{{ $certType }}.{{ sha1sum (printf "cert-%s" .name) }}</string>
   <key>PayloadType</key>
-  <string>com.apple.security.root</string>
+  <string>com.apple.security.{{ $certType }}</string>
   <key>PayloadUUID</key>
   <string>{{ sha1sum (printf "cert-%s" .name) }}</string>
   <key>PayloadVersion</key>
