@@ -39,7 +39,7 @@ VPN will always reconnect on this mode.
 
     {{- if .vpn.group }}
     <key>LocalIdentifier</key>
-    <string>{{ .vpn.username }}</string>
+    <string>{{ .vpn.group }}</string>
 
     {{- end }}
 
