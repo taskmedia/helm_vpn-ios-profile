@@ -38,7 +38,7 @@ Connection can be disabled by this setting and enabled for a period of time if n
 
     {{- if .vpn.group }}
     <key>LocalIdentifier</key>
-    <string>{{ .vpn.username }}</string>
+    <string>{{ .vpn.group }}</string>
 
     {{- end }}
 
