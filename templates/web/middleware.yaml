@@ -1,5 +1,5 @@
 {{- if and .Values.web.ingressroute.enabled (and .Values.web.ingressroute.username .Values.web.ingressroute.password) }}
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: {{ include "vpn-ios-profile.fullname" . }}-web-basicauth
