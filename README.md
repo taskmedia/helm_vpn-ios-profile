@@ -1,5 +1,7 @@
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/taskmedia)](https://artifacthub.io/packages/helm/taskmedia/vpn-ios-profile)
 
+> **⚠️ Moved:** This chart now lives in [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/vpn-ios-profile). This repository is kept for history only and no longer receives updates.
+
 # Helm chart: IPsec VPN server with iOS profile
 
 Kubernetes [Helm](https://helm.sh) chart to run a [IPsec VPN server](https://github.com/taskmedia/helm_ipsec-vpn-server) with provided iOS profile to directly connect your Apple device to use the VPN.
